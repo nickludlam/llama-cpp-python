@@ -108,7 +108,7 @@ class LlamaDiskCache(BaseLlamaCache):
         self, cache_dir: str = ".cache/llama_cache", capacity_bytes: int = (2 << 30)
     ):
         super().__init__(capacity_bytes)
-        self.cache = diskcache.Cache(cache_dir)
+        self.cache = diskcache.Cache(cache_dir, size_limit=capacity_bytes)
 
     @property
     def cache_size(self):
